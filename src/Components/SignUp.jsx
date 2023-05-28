@@ -29,7 +29,7 @@ const SignUp = () => {
 			setLoader(true);
 			delete data["cpassword"];
 			//const SIGNUP_URL = "http://localhost:8000/api/signup";
-			
+
 			const SIGNUP_URL = "https://code-geass-backend.onrender.com/api/signup";
 			const successMessage = await axios.post(SIGNUP_URL, data);
 			if (successMessage.data === "success") {
@@ -40,6 +40,7 @@ const SignUp = () => {
 			}
 			setLoader(false);
 		} catch (err) {
+			setSignupError(err.response.data.message);
 			setLoader(false);
 			console.log(err);
 		}

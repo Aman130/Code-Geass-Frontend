@@ -43,6 +43,7 @@ const Login = () => {
 			}
 			setLoader(false);
 		} catch (error) {
+			setLoginError(error.response.data.message);
 			setLoader(false);
 			console.log(error);
 		}
