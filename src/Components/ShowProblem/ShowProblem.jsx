@@ -81,8 +81,8 @@ const ShowProblem = () => {
 			async () => {
 				try {
 					setLoader(true);
-					const PROBLEM_URL = `http://localhost:8000/api/problem/${problemSlug}`;
-					// const PROBLEM_URL = `https://code-geass-backend.onrender.com/api/problem/${problemSlug}`;
+					// const PROBLEM_URL = `http://localhost:8000/api/problem/${problemSlug}`;
+					const PROBLEM_URL = `https://code-geass-backend.onrender.com/api/problem/${problemSlug}`;
 					const res = await axios.get(PROBLEM_URL, { headers: { Authorization: token } });
 					if (res.status === 200) {
 						setProblemDescriptionHTML(res.data.description)
@@ -160,8 +160,8 @@ const ShowProblem = () => {
 			else if(lang==="python") {
 				language = "py";
 			}
-			const RUN_CODE_URL = `http://localhost:8000/api/check/${problemSlug}`;
-			// const RUN_CODE_URL = `https://code-geass-backend.onrender.com/api/check/${problemSlug}`;
+			// const RUN_CODE_URL = `http://localhost:8000/api/check/${problemSlug}`;
+			const RUN_CODE_URL = `https://code-geass-backend.onrender.com/api/check/${problemSlug}`;
 			// https://code-geass-backend.onrender.com/
 			const res = await axios.post(RUN_CODE_URL, {lang: language, code, input}, { headers: { Authorization: token } });
 			if(res.status===200) {
