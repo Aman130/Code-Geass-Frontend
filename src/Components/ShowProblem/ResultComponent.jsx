@@ -15,7 +15,7 @@ function ResultComponent({ status }) {
 
   return (
     <div>
-      <span style={{ color }}>{value}</span>
+      <span style={{ color, fontSize: '20px', fontStyle: 'arial'}}>{value}</span>
     </div>
   );
 }

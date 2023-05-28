@@ -113,41 +113,19 @@ const ShowProblem = () => {
 			if(res.status===200) {
 				setOutput(res.data);
 			}
-			else{
-				
-				setOutput("Wrong Answer");
-			}
 			setLoader(false);
-			// console.log(input); 
+			
 		}catch(error) {
-			// console.log("this is new");
-			// console.log(error);
+			
 			if(error.response.data.stderr!=""){
 				setOutput(error.response.data.stderr);
 				setLoader(false);
 			}
 			else{
-				setOutput("Execution Failed: Please check code for TLE or any Runtime Errors");
+				setStatus("Time Limit Exceeded");
 				setLoader(false);
 			}
 		}
-		// 	const data=await judge(code,input);
-		// 	// console.log(data);
-		// 	// console.log(decode(data.data.stdout));
-		// 	if(data.data.status.description=="Accepted") {
-		// 		setOutput(decode(data.data.stdout));
-		// 	}
-		// 	else{
-		// 		if(data.data.compile_output!=null){
-		// 			setOutput(decode(data.data.compile_output));
-		// 		}
-		// 		else setOutput(decode(data.data.stderr));
-		// 	}
-		// 	setLoader(false);
-		// } catch(error) {
-		// 	setOutput(error.response.data.stderr);
-		// 	setLoader(false);
-		// }
 	}
 
 	const handleSubmit = async() => {
@@ -165,44 +143,19 @@ const ShowProblem = () => {
 			// https://code-geass-backend.onrender.com/
 			const res = await axios.post(RUN_CODE_URL, {lang: language, code, input}, { headers: { Authorization: token } });
 			if(res.status===200) {
-				setOutput(res.data);
+				if(res.data==="All Test Case Passed"){
+					setStatus("Accepted");
+				}
+				else setStatus("Wrong Answer");
 			}
 			setLoader(false);
-			// const CHECK_CODE_URL = `https://code-geass-b1p5.onrender.com/api/check/${problemSlug}`;
-			// const problem = await axios.post(CHECK_CODE_URL, {lang: language, code }, { headers: { Authorization: token } });
-
-			// const input=problem.data.input;
-			// const output=problem.data.output;
-			// const data=await judge(code,input);
-
-			// const codeOutput=decode(data.data.stdout).trim();
-			// if(data.data.status.description==="Accepted"){
-			// 	if(codeOutput===output){
-			// 		const checkAcceptanceObj={
-			// 			problem: problem,
-			// 			userOutput: codeOutput,
-			// 		};
-			// 		await axios.post("https://code-geass-b1p5.onrender.com/api/check-acceptance",checkAcceptanceObj,{headers:{Authorization: token}});
-			// 		setStatus("Accepted");
-			// 		// status="Accepted";
-			// 	}
-			// 	else{
-			// 		setStatus("Wrong Answer");
-			// 		// status="Wrong Answer";
-			// 	}
-			// }
-			// else{
-			// 	setStatus(data.data.status.description);
-			// 	// status=data.data.status.description;
-			// }
-			// setLoader(false);
 		} catch(error) {
 			if(error.response.data.stderr!=""){
 				setOutput(error.response.data.stderr);
 				setLoader(false);
 			}
 			else{
-				setOutput("Execution Failed: Please check code for TLE or any Runtime Errors");
+				setStatus("Time Limit Exceeded");
 				setLoader(false);
 			}
 		}
