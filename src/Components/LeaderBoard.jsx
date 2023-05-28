@@ -50,7 +50,8 @@ const LeaderBoard = () => {
 			async () => {
 				try {
 					setLoader(true);
-					const GET_LEADER_BOARD = `https://code-geass-b1p5.onrender.com/api/leader-board`;
+					//const GET_LEADER_BOARD = `http://localhost:8000/api/leader-board`;
+					const GET_LEADER_BOARD = `https://code-geass-backend.onrender.com/api/leader-board`;
 					const res = await axios.get(GET_LEADER_BOARD, { headers: { Authorization: token } });
 					if (res.status === 200) {
 						setRows(res.data);

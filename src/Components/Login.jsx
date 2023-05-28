@@ -27,7 +27,8 @@ const Login = () => {
 	const onSubmit = async (data) => {
 		try {
 			setLoader(true);
-			const LOGIN_URL = `https://code-geass-b1p5.onrender.com/api/login`;
+			//const LOGIN_URL = `http://localhost:8000/api/login`;
+			const LOGIN_URL = `https://code-geass-backend.onrender.com/api/login`;
 			const res = await axios.post(LOGIN_URL, data);
 			if (res.status===200) {
 				let token = res.data;

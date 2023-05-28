@@ -18,7 +18,7 @@ import Cookies from "js-cookie";
 const Navbar = () => {
 
 	const { user, isLoggedIn, setToken } = useContext(UserContext);
-
+	
 	const [mobileMenu, setMobileMenu] = useState({
 		left: false,
 	});

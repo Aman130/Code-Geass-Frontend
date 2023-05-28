@@ -50,7 +50,8 @@ const AddProblem = () => {
 		event.preventDefault();
 		try {
 			setLoader(true);
-			const ADD_PROBLEM_URL = "https://code-geass-b1p5.onrender.com/admin/problem";
+			//const ADD_PROBLEM_URL = "http://localhost:8000/admin/problem";
+			const ADD_PROBLEM_URL = "https://code-geass-backend.onrender.com/admin/problem";
 			const successMessage = await axios.post(ADD_PROBLEM_URL, data, { headers: { Authorization: token } });
 			if (successMessage.data === "success") {
 				alert("Problem Added Successfully");

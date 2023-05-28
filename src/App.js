@@ -23,7 +23,8 @@ function App() {
   useEffect(() => {
     (
       async () => {
-        const USER_URL = "https://code-geass-b1p5.onrender.com/api/user";
+        //const USER_URL = "https://code-geass-b1p5.onrender.com/api/user";
+        const USER_URL = "https://code-geass-backend.onrender.com/api/user";
         const res = await axios.get(USER_URL, { headers: { Authorization: token } });
         if (res.status === 200) {
           setUser(res.data);

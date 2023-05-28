@@ -28,7 +28,9 @@ const SignUp = () => {
 		try {
 			setLoader(true);
 			delete data["cpassword"];
-			const SIGNUP_URL = "https://code-geass-b1p5.onrender.com/api/signup";
+			//const SIGNUP_URL = "http://localhost:8000/api/signup";
+			
+			const SIGNUP_URL = "https://code-geass-backend.onrender.com/api/signup";
 			const successMessage = await axios.post(SIGNUP_URL, data);
 			if (successMessage.data === "success") {
 				navigate('/login');

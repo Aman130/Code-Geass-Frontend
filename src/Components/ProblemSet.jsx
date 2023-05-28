@@ -54,7 +54,8 @@ const ProblemSet = () => {
 			async () => {
 				try {
 					setLoader(true);
-					const GET_ALL_PROBLEMS_URL = `https://code-geass-b1p5.onrender.com/api/problem`;
+					//const GET_ALL_PROBLEMS_URL = `http://localhost:8000/api/problem`;
+					const GET_ALL_PROBLEMS_URL = `https://code-geass-backend.onrender.com/api/problem`;
 					const res = await axios.get(GET_ALL_PROBLEMS_URL, { headers: { Authorization: token } });
 					if (res.status === 200) {
 						setRows(res.data);
